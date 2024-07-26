@@ -12,7 +12,7 @@ const Admin = () => {
   const [passwordArray, setPasswordArray] = useState([]);
 
   const getPasswords = async () => {
-    let req = await fetch("http://localhost:3000/")
+    let req = await fetch("https://passop-backend-ppeb.onrender.com")
     let passwords = await req.json();
     setPasswordArray(passwords);
   };
@@ -60,7 +60,7 @@ const Admin = () => {
       //   });
 
       setPasswordArray([...passwordArray, { ...form, id: uuidv4() }]);
-      await fetch("http://localhost:3000/", {
+      await fetch("https://passop-backend-ppeb.onrender.com", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...form, id: uuidv4() }),
@@ -89,7 +89,7 @@ const Admin = () => {
     if (c) {
       setPasswordArray(passwordArray.filter((item) => item.id !== id));
 
-      await fetch("http://localhost:3000/",
+      await fetch("https://passop-backend-ppeb.onrender.com",
        {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
